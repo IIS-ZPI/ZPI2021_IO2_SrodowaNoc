@@ -11,6 +11,10 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
 
     @Override
     public double Division(double A, double B) {
+        if (B == 0) {
+            System.out.println("Nie można dzilić przez 0");
+            throw new IllegalArgumentException();
+        }
         return A / B;
     }
 
