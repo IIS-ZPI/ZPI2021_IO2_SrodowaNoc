@@ -3,7 +3,7 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
     public double Addition(double A, double B) {
         return A + B;
     }
-
+    //powinno być z małych, ale to nie mój problem ¯\_(ツ)_/¯
     @Override
     public double Difference(double A, double B) {
         return A - B;
