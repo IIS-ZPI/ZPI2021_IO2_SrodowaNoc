@@ -1,14 +1,18 @@
 public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmeticsMult, IArithmeticsDiv {
+    //dodawanie
     @Override
     public double Addition(double A, double B) {
         return A + B;
     }
+
     //Komentarz 1
+	//odejmowanie
     @Override
     public double Difference(double A, double B) {
         return A - B;
     }
 
+    //dzielenie
     @Override
     public double Division(double A, double B) {
         if (B == 0) {
