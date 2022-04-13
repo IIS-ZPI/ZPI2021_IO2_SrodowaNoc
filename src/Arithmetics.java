@@ -18,7 +18,6 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
         return A / B;
     }
 
-    //mnożenie
     @Override
     public double Multiplication(double a, double b) {
         return a * b;
