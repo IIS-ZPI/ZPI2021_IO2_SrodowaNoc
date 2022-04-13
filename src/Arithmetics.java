@@ -1,4 +1,5 @@
 public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmeticsMult, IArithmeticsDiv {
+    //dodawanie
     @Override
     public double Addition(double A, double B) {
         return A + B;
