@@ -4,6 +4,7 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
         return A + B;
     }
 
+    //odejmowanie
     @Override
     public double Difference(double A, double B) {
         return A - B;
