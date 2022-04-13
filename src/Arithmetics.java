@@ -1,4 +1,6 @@
-public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmeticsMult, IArithmeticsDiv {
+import static java.lang.Math.pow;
+
+public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmeticsMult, IArithmeticsDiv, IArithmeticsExp {
     @Override
     public double Addition(double A, double B) {
         return A + B;
@@ -19,7 +21,12 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
     }
 
     @Override
-    public double Multiplication(double a, double b) {
-        return a * b;
+    public double Multiplication(double A, double B) {
+        return A * B;
+    }
+
+    @Override
+    public double Exponentiation(double A, double B) {
+        return pow(A, B);
     }
 }
