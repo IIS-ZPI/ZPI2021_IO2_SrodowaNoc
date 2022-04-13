@@ -11,6 +11,7 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
         return A - B;
     }
 
+    //dzielenie
     @Override
     public double Division(double A, double B) {
         if (B == 0) {
