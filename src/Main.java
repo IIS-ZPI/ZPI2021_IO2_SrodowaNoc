@@ -4,6 +4,6 @@ public class Main {
         System.out.println("GitID Developera: MateuszMatusiak");
     	System.out.println("GitID: WojFar");
     	System.out.println("GitID: Bena2000");
-        System.out.println("Nazwa grupy: SrodowaNoc, GitID: karolprofic");
+        System.out.println("Nazwa grupy: SrodowaNoc, GitID: karolprofic"); //consistancy: 25%
     }
 }

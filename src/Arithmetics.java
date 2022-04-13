@@ -4,9 +4,9 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
     public double Addition(double A, double B) {
         return A + B;
     }
-
-    //Komentarz 1
+	//Komentarz 1
 	//odejmowanie
+    //powinno być z małych, ale to nie mój problem ¯\_(ツ)_/¯
     @Override
     public double Difference(double A, double B) {
         return A - B;
