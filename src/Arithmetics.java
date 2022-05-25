@@ -21,7 +21,8 @@ public class Arithmetics implements IArithmeticsAdd, IArithmeticsDiff, IArithmet
         }
         return A / B;
     }
-    //Komentarz 2
+
+    //mnożenie
     @Override
     public double Multiplication(double a, double b) {
         return a * b;
