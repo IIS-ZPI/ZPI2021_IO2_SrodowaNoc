@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controller">
+    <children>
+        <AnchorPane fx:id="bar" prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #1f2329;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label fx:id="drawerImage" layoutX="7.0" layoutY="7.0">
+                    <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" styleClass="icons.css">
+                            <image>
+                                <Image url="@icons/burger.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+            <AnchorPane layoutX="668.0" layoutY="7.0" prefHeight="32.0" prefWidth="153.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <ImageView fx:id="exit" fitHeight="24.0" fitWidth="24.0" layoutX="115.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="5.0">
+                     <image>
+                        <Image url="@icons/exit.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="fullscreen" fitHeight="24.0" fitWidth="24.0" layoutX="83.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="5.0">
+                     <image>
+                        <Image url="@icons/fullscreen.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="minimize" fitHeight="24.0" fitWidth="24.0" layoutX="60.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="5.0">
+                     <image>
+                        <Image url="@icons/minimize.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="55.0" prefHeight="46.0" prefWidth="188.0" text="NBP APP" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="44.0" style="-fx-background-color: white;">
+            <children>
+                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="10.0" style="-fx-background-color: white;" AnchorPane.topAnchor="20.0">
+                    <children>
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/trends.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/statistic.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/pairs.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="sceneParent" layoutX="44.0" layoutY="46.0" prefHeight="722.0" prefWidth="1325.0" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <BorderPane fx:id="scene" prefHeight="722.0" prefWidth="1325.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+        </AnchorPane>
+        <AnchorPane fx:id="opacityPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane fx:id="drawerPane" prefHeight="454.0" prefWidth="178.0" style="-fx-background-color: #272b34;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="46.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <JFXButton fx:id="trends" alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#trends" prefHeight="38.0" prefWidth="179.0" text="Trendy" textFill="#f5f4f4">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </JFXButton>
+                        <JFXButton fx:id="statistics" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#statistics" prefHeight="38.0" prefWidth="179.0" text="Statystyka" textFill="#f5f4f4">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </JFXButton>
+                        <JFXButton fx:id="pairs" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="10.0" layoutY="58.0" onAction="#pairs" prefHeight="38.0" prefWidth="178.0" text="Pary walutowe" textFill="#f5f4f4">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </JFXButton>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="menuIcons" prefHeight="454.0" prefWidth="44.0" style="-fx-background-color: #1f2329;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0">
+            <children>
+                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="44.0" spacing="11.0" AnchorPane.topAnchor="5.0">
+                    <children>
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/trends.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/statistic.png" />
+                            </image>
+                        </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/pairs.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

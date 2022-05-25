@@ -1,0 +1,55 @@
+.places {
+    -fx-background-image: url('places.png');
+    -fx-background-size: 60% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 20%;
+}
+
+.calendar {
+    -fx-background-image: url('calendar.png');
+    -fx-background-size: 60% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 50%;
+}
+
+.dictionary {
+    -fx-background-image: url('dictionary.png');
+    -fx-background-size: 60% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 20%;
+}
+
+
+
+
+.exit{
+    -fx-background-color: transparent;
+    -fx-background-image: url('exit.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+
+}
+
+.fullscreen{
+    -fx-background-color: transparent;
+    -fx-background-image: url('fullscreen.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+
+}
+
+.minimize{
+    -fx-background-color: transparent;
+    -fx-background-image: url('minimize.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+
+}
+.map {
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 20%;
+}
+
+.background {
+    -fx-background-color: #d9f5f9;
+}
