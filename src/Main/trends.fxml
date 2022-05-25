@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.web.WebView?>
+
+<Pane style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Trends">
+   <children>
+      <WebView fx:id="webView" maxHeight="-1.0" maxWidth="-1.0" minHeight="722.0" minWidth="1324.0" prefHeight="-1.0" prefWidth="-1.0" />
+   </children>
+</Pane>
