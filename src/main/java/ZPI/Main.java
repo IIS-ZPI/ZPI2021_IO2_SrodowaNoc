@@ -20,7 +20,7 @@ public class Main extends Application {
 		try {
 			stg = stage;
 
-//			Image image = new Image("./icons/icon.png");
+//			Image image = new Image("Main/icons/icon.png");
 
 			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home.fxml")));
 			Scene scene = new Scene(root);
