@@ -1,0 +1,48 @@
+.trends {
+    -fx-background-image: url('trends.png');
+    -fx-background-size: 60% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 20%;
+}
+
+.statistics {
+    -fx-background-image: url('statistics.png');
+    -fx-background-size: 60% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 50%;
+}
+
+.pairs {
+    -fx-background-image: url('pairs.png');
+    -fx-background-size: 60% 60%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50% 20%;
+}
+
+.exit{
+    -fx-background-color: transparent;
+    -fx-background-image: url('exit.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+
+}
+
+.fullscreen{
+    -fx-background-color: transparent;
+    -fx-background-image: url('fullscreen.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+
+}
+
+.minimize{
+    -fx-background-color: transparent;
+    -fx-background-image: url('minimize.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+
+}
+
+.background {
+    -fx-background-color: #d9f5f9;
+}

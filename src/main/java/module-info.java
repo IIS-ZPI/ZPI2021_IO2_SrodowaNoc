@@ -1,5 +1,4 @@
-module NBP {
-
+module com.srodowanoc.zpi {
 	requires javafx.graphics;
 	requires javafx.controls;
 	requires javafx.media;
@@ -8,5 +7,13 @@ module NBP {
 	requires javafx.swing;
 	requires javafx.fxml;
 
-	opens ZPI;
+	requires org.controlsfx.controls;
+	requires com.dlsc.formsfx;
+	requires validatorfx;
+	requires org.kordamp.ikonli.javafx;
+	requires org.kordamp.bootstrapfx.core;
+	requires eu.hansolo.tilesfx;
+
+	opens com.srodowanoc.zpi to javafx.fxml;
+	exports com.srodowanoc.zpi;
 }
