@@ -23,26 +23,9 @@ public class Statistics implements Initializable {
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     Stage stage = Main.stg;
 
-    TimerTask changeScreen = new TimerTask() {
-        @Override
-        public void run() {
-            stage = Main.stg;
-            if (!stage.isFullScreen()) {
-                ap.setMinWidth(1324);
-                ap.setMinHeight(722);
-            } else {
-                ap.setMinWidth(screenBounds.getWidth() - 42);
-                ap.setMinHeight(screenBounds.getHeight() - 46);
-            }
-        }
-    };
-    Timer timer = new Timer();
-
-
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        timer.schedule(changeScreen, 0, 1);
 
         // Example
         // TODO: Waluty do wyboru: http://api.nbp.pl/api/exchangerates/tables/a/?format=json

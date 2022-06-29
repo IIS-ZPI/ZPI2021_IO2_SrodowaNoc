@@ -27,9 +27,6 @@ public class Controller implements Initializable {
 	private BorderPane scene;
 
 	@FXML
-	private ImageView fullscreen;
-
-	@FXML
 	private ImageView exit;
 
 	@FXML
@@ -53,8 +50,6 @@ public class Controller implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		exit.setOnMouseClicked(event -> System.exit(0));
-
-		changeFullscreen();
 
 		minimize();
 
@@ -90,45 +85,8 @@ public class Controller implements Initializable {
 		});
 	}
 
-	public void changeFullscreen() {
-		fullscreen.setOnMouseClicked(event -> {
-			if (stage.isFullScreen()) {
-				setSmallscreen();
-			} else {
-				setFullscreen();
-			}
-		});
-		bar.setOnMouseClicked(mouseEvent -> {
-			if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-				if (mouseEvent.getClickCount() == 2) {
-					if (stage.isFullScreen()) {
-						setSmallscreen();
-					} else
-						setFullscreen();
-				}
-			}
-		});
-	}
-
 	private void minimize() {
 		minimize.setOnMouseClicked(event -> stage.setIconified(true));
-	}
-
-	private void setSmallscreen() {
-		stage.setFullScreen(false);
-		Image image = new Image("Main/icons/fullscreen.png");
-		fullscreen.setImage(image);
-
-	}
-
-	private void setFullscreen() {
-		stage.setX(0);
-		stage.setY(0);
-		stage.setFullScreen(true);
-		Image image = new Image("Main/icons/smallscreen.png");
-		fullscreen.setImage(image);
-
-
 	}
 
 	public void setMovement() {
@@ -137,18 +95,6 @@ public class Controller implements Initializable {
 			y = event.getSceneY();
 		});
 
-		bar.setOnMouseDragged(event -> {
-			stage.setX(event.getScreenX() - x);
-			stage.setY(event.getScreenY() - y);
-			if (stage.getY() <= 0) {
-				setFullscreen();
-				stage.setX(0);
-				stage.setY(0);
-			} else if (stage.isFullScreen()) {
-				setSmallscreen();
-
-			}
-		});
 	}
 
 	public void fadeIn() {
