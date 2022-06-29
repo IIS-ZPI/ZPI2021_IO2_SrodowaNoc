@@ -127,7 +127,7 @@ public class Statistics implements Initializable {
     }
     
     /**
-     * Calculate number of growth, decline and stable session over given number of days
+     * Calculate median, mode, standard deviation, variations
      */
     public float[] calculateIndicatorsByDays(JsonArray data, int numberOfDays) {
         float[] array = new float[numberOfDays];
