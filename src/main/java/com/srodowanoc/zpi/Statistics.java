@@ -7,25 +7,13 @@ import com.google.gson.JsonParser;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Statistics implements Initializable {
 
@@ -52,7 +40,6 @@ public class Statistics implements Initializable {
         }
 
     }
-
 
     /**
      * Returns 2D arrays of strings that should be displayed as table
@@ -87,7 +74,7 @@ public class Statistics implements Initializable {
             dataToDisplay[i+1][1] = String.valueOf(indicators[i][0]);
             dataToDisplay[i+1][2] = String.valueOf(indicators[i][1]);
             dataToDisplay[i+1][3] = String.valueOf(indicators[i][2]);
-            dataToDisplay[i+1][4] = String.valueOf(indicators[i][2]);
+            dataToDisplay[i+1][4] = String.format("%.2f", indicators[i][3]).replaceAll(",", ".") + "%";
         }
 
         return dataToDisplay;
@@ -128,7 +115,7 @@ public class Statistics implements Initializable {
     /**
      * Returns today date and date year ago
      */
-    public String[] findStartAndEndDates() {
+    static String[] findStartAndEndDates() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         Date today = calendar.getTime();
@@ -138,41 +125,97 @@ public class Statistics implements Initializable {
         String from = dateFormat.format(nextYear);
         return new String[]{from, to};
     }
-
+    
     /**
      * Calculate number of growth, decline and stable session over given number of days
      */
     public float[] calculateIndicatorsByDays(JsonArray data, int numberOfDays) {
-        float median = 0;
-        float dominant = 0;
-        float standardDeviation = 0;
-        float variations = 0;
-
         float[] array = new float[numberOfDays];
         for (int i = 0; i < numberOfDays; i = i + 1) {
             array[i] = data.get(i).getAsJsonObject().get("mid").getAsFloat();
         }
         Arrays.sort(array, 0, numberOfDays);
 
-        System.out.println(Arrays.toString(array));
-//        for (int i = 1; i < numberOfDays; i = i + 1) {
-//            JsonElement yesterdayData = data.get(i-1);
-//            JsonElement todayData = data.get(i);
-//            float yesterdayMidPrice = yesterdayData.getAsJsonObject().get("mid").getAsFloat();
-//            float todayMidPrice = todayData.getAsJsonObject().get("mid").getAsFloat();
-//
-//            if (todayMidPrice > yesterdayMidPrice) {
-//                growth = growth + 1;
-//            }
-//            if (todayMidPrice < yesterdayMidPrice) {
-//                decline = decline + 1;
-//            }
-//            if (todayMidPrice == yesterdayMidPrice) {
-//                stable = stable + 1;
-//            }
-//        }
+        float median = array[array.length / 2];;
+        float mode = calculateMode(array);
+        float standardDeviation = calculateStandardDeviation(array);
+        float variations = calculateVariations(array);
 
-        return new float[] {median, dominant, standardDeviation, variations};
+        return new float[] {median, mode, standardDeviation, variations};
+
     }
+
+    public float calculateSum(float[] array) {
+        float sum = 0;
+        for (float value : array) {
+            sum += value;
+        }
+        return sum;
+    }
+
+    public float calculateMean(float[] array) {
+        return calculateSum(array) / array.length;
+    }
+
+    public float calculateMode(float[] array) {
+        float[][] data = new float[array.length][2];
+
+        for (int i = 0; i < array.length; i = i + 1) {
+            data[i][0] = array[i];
+            data[i][1] = numberOfOccurrence(array, array[i]);
+        }
+
+        float value = 0f;
+        float occurrence = 0f;
+
+        for (int i = 0; i < array.length; i = i + 1) {
+            if (data[i][1] > occurrence) {
+                value = data[i][0];
+                occurrence = data[i][1];
+            }
+        }
+
+        if (occurrence == 1.0) {
+            return findMaximum(array);
+        } else {
+            return value;
+        }
+
+    }
+
+    public float findMaximum(float[] array) {
+        float max = 0f;
+        for(float value: array) {
+            if (max < value) {
+                max = value;
+            }
+        }
+        return max;
+    }
+
+    public float numberOfOccurrence(float[] array, float number) {
+        int numberOfOccurrence = 0;
+        for(float value: array) {
+            if (value == number) {
+                numberOfOccurrence += 1;
+            }
+        }
+        return numberOfOccurrence;
+    }
+
+    public float calculateStandardDeviation(float[] array) {
+        double standardDeviation = 0.0;
+        double mean = calculateMean(array);
+        for(double value: array) {
+            standardDeviation += Math.pow(value - mean, 2);
+        }
+        double result = Math.sqrt(standardDeviation/array.length);
+        return (float) result;
+    }
+
+    public float calculateVariations(float[] array) {
+        return (calculateStandardDeviation(array) / calculateMean(array)) * 100;
+    }
+
 }
 
