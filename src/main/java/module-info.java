@@ -13,6 +13,9 @@ module com.srodowanoc.zpi {
 	requires org.kordamp.ikonli.javafx;
 	requires org.kordamp.bootstrapfx.core;
 	requires eu.hansolo.tilesfx;
+    requires java.net.http;
+    requires com.google.gson;
+
 
 	opens com.srodowanoc.zpi to javafx.fxml;
 	exports com.srodowanoc.zpi;
