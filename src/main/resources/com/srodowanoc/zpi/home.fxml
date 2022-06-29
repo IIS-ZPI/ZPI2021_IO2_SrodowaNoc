@@ -29,12 +29,7 @@
                         <Image url="@icons/exit.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="fullscreen" fitHeight="24.0" fitWidth="24.0" layoutX="83.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="5.0">
-                     <image>
-                        <Image url="@icons/fullscreen.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="minimize" fitHeight="24.0" fitWidth="24.0" layoutX="60.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="5.0">
+                  <ImageView fx:id="minimize" fitHeight="24.0" fitWidth="24.0" layoutX="77.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="2.0">
                      <image>
                         <Image url="@icons/minimize.png" />
                      </image>
