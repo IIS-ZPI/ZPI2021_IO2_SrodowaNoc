@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ZPI2021_IO2_SrodowaNoc.iml" filepath="$PROJECT_DIR$/ZPI2021_IO2_SrodowaNoc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZPI.iml" filepath="$PROJECT_DIR$/ZPI.iml" />
     </modules>
   </component>
 </project>
