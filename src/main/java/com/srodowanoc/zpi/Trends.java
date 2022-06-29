@@ -1,5 +1,6 @@
 package com.srodowanoc.zpi;
 
+
 import com.google.gson.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,9 +10,13 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.net.URL;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Trends implements Initializable {
     @FXML
@@ -34,7 +39,7 @@ public class Trends implements Initializable {
         }
     };
     Timer timer = new Timer();
-
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         timer.schedule(changeScreen, 0, 1);
@@ -164,4 +169,5 @@ public class Trends implements Initializable {
         return new int[]{growth, decline, stable};
     }
 
+    }
 }

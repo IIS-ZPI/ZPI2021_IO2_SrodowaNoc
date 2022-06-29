@@ -191,11 +191,5 @@ public class Statistics implements Initializable {
 
         return new float[] {median, dominant, standardDeviation, variations};
     }
-
 }
-
-
-
-
-
 

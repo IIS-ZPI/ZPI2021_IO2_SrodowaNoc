@@ -16,6 +16,7 @@ module com.srodowanoc.zpi {
     requires java.net.http;
     requires com.google.gson;
 
+
 	opens com.srodowanoc.zpi to javafx.fxml;
 	exports com.srodowanoc.zpi;
 }
