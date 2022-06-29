@@ -1,6 +1,5 @@
 package com.srodowanoc.zpi;
 
-
 import com.google.gson.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,15 +7,13 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.web.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
 import java.net.URL;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static com.srodowanoc.zpi.Statistics.findStartAndEndDates;
 
 public class Trends implements Initializable {
     @FXML
@@ -128,20 +125,6 @@ public class Trends implements Initializable {
     }
 
     /**
-     * Returns today date and date year ago
-     */
-    public String[] findStartAndEndDates() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar calendar = Calendar.getInstance();
-        Date today = calendar.getTime();
-        String to = dateFormat.format(today);
-        calendar.add(Calendar.YEAR, -1);
-        Date nextYear = calendar.getTime();
-        String from = dateFormat.format(nextYear);
-        return new String[]{from, to};
-    }
-
-    /**
      * Calculate number of growth, decline and stable session over given number of days
      */
     public int[] calculateIndicatorsByDays(JsonArray data, int numberOfDays) {
@@ -169,5 +152,4 @@ public class Trends implements Initializable {
         return new int[]{growth, decline, stable};
     }
 
-    }
 }
