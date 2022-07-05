@@ -95,6 +95,11 @@ public class Controller implements Initializable {
 			y = event.getSceneY();
 		});
 
+		bar.setOnMouseDragged(event -> {
+			stage.setX(event.getScreenX() - x);
+			stage.setY(event.getScreenY() - y);
+		});
+
 	}
 
 	public void fadeIn() {

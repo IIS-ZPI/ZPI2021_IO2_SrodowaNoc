@@ -59,8 +59,8 @@ public class Pairs implements Initializable {
             return null;
         }
 
-        JsonObject firstJsonObject = new JsonParser().parse(firstRequest.data).getAsJsonObject();
-        JsonObject secondJsonObject = new JsonParser().parse(secondRequest.data).getAsJsonObject();
+        JsonObject firstJsonObject = JsonParser.parseString(firstRequest.data).getAsJsonObject();
+        JsonObject secondJsonObject = JsonParser.parseString(secondRequest.data).getAsJsonObject();
 
         JsonArray firstData = firstJsonObject.get("rates").getAsJsonArray();
         JsonArray secondData = secondJsonObject.get("rates").getAsJsonArray();
