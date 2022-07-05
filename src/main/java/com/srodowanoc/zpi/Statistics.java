@@ -4,10 +4,16 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.net.URL;
@@ -18,27 +24,45 @@ import java.util.*;
 public class Statistics implements Initializable {
 
     @FXML
-    private AnchorPane ap;
+    private VBox table;
 
-    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-    Stage stage = Main.stg;
+    @FXML
+    private Label errorLabel;
+
+    @FXML
+    private ComboBox currencySelect;
+
+    Map<String, String> currencies;
 
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        currencies = new HashMap<>();
+        currencySelect.getItems().addAll(Utils.getAvailableCurrencies(currencies));
+        currencySelect.setOnAction((EventHandler<ActionEvent>) this::selectCurrency);
+        currencySelect.setValue("Euro");
+        prepareData("EUR");
 
-        // Example
+    }
+
+    @FXML
+    private void selectCurrency(ActionEvent event) {
+        String currency = currencySelect.getSelectionModel().getSelectedItem().toString();
+        prepareData(currencies.get(currency));
+    }
+
+    private void prepareData(String currency) {
         // TODO: Waluty do wyboru: http://api.nbp.pl/api/exchangerates/tables/a/?format=json
-        String[][] data = getData("EUR");
+        String[][] data = getData(currency);
         if (data != null) {
-            // TODO: Printing data
+            errorLabel.setVisible(false);
+            Utils.printData(data, table);
             for (String[] row : data) {
                 System.out.println(Arrays.deepToString(row));
             }
         } else {
-            // TODO: Error handling
+            errorLabel.setVisible(true);
         }
-
     }
 
     /**

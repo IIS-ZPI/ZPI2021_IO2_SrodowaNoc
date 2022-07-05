@@ -53,6 +53,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="errorLabel" layoutX="532.0" layoutY="598.0" prefHeight="17.0" prefWidth="305.0" text="Something is no yes" textFill="RED" visible="false" />
+      <Label fx:id="errorLabel" layoutX="532.0" layoutY="598.0" prefHeight="17.0" prefWidth="305.0" text="Coś poszło nie tak" textFill="RED" visible="false" />
    </children>
 </Pane>

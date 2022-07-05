@@ -34,7 +34,7 @@ public class Trends implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		currencies = new HashMap<>();
-		currencySelect.getItems().addAll(getAvailableCurrencies());
+		currencySelect.getItems().addAll(Utils.getAvailableCurrencies(currencies));
 		currencySelect.setOnAction((EventHandler<ActionEvent>) this::selectCurrency);
 		currencySelect.setValue("Euro");
 		prepareData("EUR");
@@ -50,52 +50,14 @@ public class Trends implements Initializable {
 		// TODO: Waluty do wyboru: http://api.nbp.pl/api/exchangerates/tables/a/?format=json
 		String[][] data = getData(currency);
 		if (data != null) {
-			printData(data);
+			errorLabel.setVisible(false);
+			Utils.printData(data, table);
 			for (String[] row : data) {
 				System.out.println(Arrays.deepToString(row));
 			}
 		} else {
 			errorLabel.setVisible(true);
 		}
-	}
-
-	private void printData(String[][] data) {
-		table.getChildren().clear();
-		for (int i = 1; i < data.length; i++) {
-			String[] row = data[i];
-			HBox line = new HBox();
-			line.setSpacing(25);
-			for (String entry : row) {
-				Label l = new Label(entry);
-				l.setPrefWidth(150);
-				l.setMinWidth(150);
-				l.setMaxWidth(150);
-				line.getChildren().add(l);
-			}
-			table.getChildren().add(line);
-		}
-	}
-
-	public String[] getAvailableCurrencies() {
-		Request request = new Request();
-		request.getAvailableCurrency("a");
-		if (request.status != 200) {
-			System.out.println("Unable to get data!");
-			return null;
-		}
-		request.data = request.data.substring(1, request.data.length()-1);
-		JsonObject jsonObject = JsonParser.parseString(request.data).getAsJsonObject();
-		JsonArray data = jsonObject.get("rates").getAsJsonArray();
-
-		String[] res = new String[data.size()];
-		for (int i = 0; i < data.size(); ++i) {
-			JsonElement element = data.get(i);
-			String name = element.getAsJsonObject().get("currency").getAsString();
-			res[i] = name;
-			String code = element.getAsJsonObject().get("code").getAsString();
-			currencies.put(name, code);
-		}
-		return res;
 	}
 
 	/**
