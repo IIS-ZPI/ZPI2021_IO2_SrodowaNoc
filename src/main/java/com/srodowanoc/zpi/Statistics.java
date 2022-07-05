@@ -54,7 +54,7 @@ public class Statistics implements Initializable {
             return null;
         }
 
-        JsonObject jsonObject = new JsonParser().parse(request.data).getAsJsonObject();
+        JsonObject jsonObject = JsonParser.parseString(request.data).getAsJsonObject();
         JsonArray data = jsonObject.get("rates").getAsJsonArray();
         data = reverseArray(data);
 
