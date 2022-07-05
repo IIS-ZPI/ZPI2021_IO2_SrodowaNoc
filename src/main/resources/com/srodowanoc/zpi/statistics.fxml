@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.srodowanoc.zpi.Statistics">
-    <content>
-        <AnchorPane fx:id="ap" minHeight="722.0" minWidth="1325.0" style="-fx-background-color: lightgrey;" />
-    </content>
-</ScrollPane>
+<Pane minHeight="722.0" minWidth="1324.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.srodowanoc.zpi.Statistics">
+    <children>
+        <AnchorPane layoutX="270.0" layoutY="82.0" minHeight="0.0" minWidth="0.0">
+            <children>
+                <VBox>
+                    <children>
+                        <HBox prefHeight="25.0" prefWidth="900.0" spacing="25.0" style="-fx-background-color: grey; -fx-border-color: black;">
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="150.0" text="Okres">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="150.0" text="Mediana">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="38.0" layoutY="10.0" prefHeight="17.0" prefWidth="150.0" text="Dominanta">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="66.0" layoutY="10.0" prefHeight="17.0" prefWidth="150.0" text="Odchylenie standardowe">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                        <Label layoutX="536.0" layoutY="11.0" prefHeight="17.0" prefWidth="150.0" text="Współczynnik zmienności">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </HBox>
+                        <VBox fx:id="table" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: lightgrey; -fx-border-color: black;" />
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <ComboBox fx:id="currencySelect" layoutX="69.0" layoutY="126.0" prefWidth="150.0" />
+        <Label layoutX="69.0" layoutY="82.0" prefHeight="35.0" prefWidth="183.0" text="Wybór waluty">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label fx:id="errorLabel" layoutX="270.0" layoutY="607.0" prefHeight="17.0" prefWidth="305.0" text="Coś poszło nie tak" textFill="RED" visible="false" />
+    </children>
+</Pane>
