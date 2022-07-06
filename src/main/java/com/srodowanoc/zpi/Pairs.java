@@ -4,41 +4,75 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import static com.srodowanoc.zpi.Statistics.findStartAndEndDates;
 
 public class Pairs implements Initializable {
     @FXML
-    private WebView webView;
+    private VBox table;
 
-    Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-    Stage stage = Main.stg;
+    @FXML
+    private Label errorLabel;
 
+    @FXML
+    private ComboBox currencySelect;
+    @FXML
+    private ComboBox currencySelect2;
+
+    Map<String, String> currencies;
+
+    String currency1 = "euro", currency2 = "dolar amerykański";
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // Example
+        currencies = new HashMap<>();
+        currencySelect.getItems().addAll(Utils.getAvailableCurrencies(currencies));
+        currencySelect.setOnAction((EventHandler<ActionEvent>) this::selectCurrency);
+        currencySelect.setValue(currency1);
+
+        currencySelect2.getItems().addAll(Utils.getAvailableCurrencies(currencies));
+        currencySelect2.setOnAction((EventHandler<ActionEvent>) this::selectCurrency2);
+        currencySelect2.setValue(currency2);
+        prepareData();
+    }
+
+    @FXML
+    private void selectCurrency(ActionEvent event) {
+        currency1 = currencySelect.getSelectionModel().getSelectedItem().toString();
+        prepareData();
+    }
+
+    @FXML
+    private void selectCurrency2(ActionEvent event) {
+        currency2 = currencySelect2.getSelectionModel().getSelectedItem().toString();
+        prepareData();
+    }
+
+    private void prepareData() {
         // TODO: Waluty do wyboru: http://api.nbp.pl/api/exchangerates/tables/a/?format=json
-        String[][] data = getData("EUR", "USD");
+        String[][] data = getData(currencies.get(currency1), currencies.get(currency2));
         if (data != null) {
-            // TODO: Printing data
+            errorLabel.setVisible(false);
+            Utils.printData(data, table);
             for (String[] row : data) {
                 System.out.println(Arrays.deepToString(row));
             }
         } else {
-            // TODO: Error handling
+            errorLabel.setVisible(true);
         }
     }
 
@@ -122,7 +156,7 @@ public class Pairs implements Initializable {
     public JsonArray reverseArray(JsonArray array) {
         JsonArray reversed = new JsonArray();
 
-        for (int i = array.size()-1; i >= 0; i = i - 1) {
+        for (int i = array.size() - 1; i >= 0; i = i - 1) {
             JsonElement el = array.get(i);
             reversed.add(el);
         }
